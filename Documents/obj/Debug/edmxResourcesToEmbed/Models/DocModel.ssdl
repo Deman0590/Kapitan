@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DocModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cars">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarNumber" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="StateNumber" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ChassisNumber" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="BranchListId" Type="int" />
+    <Property Name="DateRelease" Type="int" Nullable="false" />
+    <Property Name="BrandListId" Type="int" />
+    <Property Name="ModelId" Type="nvarchar" MaxLength="200" />
+    <Property Name="EcologicalClassListId" Type="int" />
+    <Property Name="TypeCarListId" Type="int" />
+    <Property Name="TypeFreightListId" Type="int" />
+    <Property Name="OwnershipListId" Type="int" />
+    <Property Name="DepositId" Type="bit" />
+    <Property Name="OwnershipName" Type="nvarchar(max)" />
+    <Property Name="OwnershipDateFrom" Type="datetime" />
+    <Property Name="OwnershipDateTo" Type="datetime" />
+    <Property Name="OwnershipNote" Type="nvarchar(max)" />
+    <Property Name="TrailerCarNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="TrailerStateNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="Massa" Type="int" />
+    <Property Name="MaxLoad" Type="int" />
+    <Property Name="GearboxListId" Type="int" />
+    <Property Name="AmountFuelTank" Type="int" />
+    <Property Name="LeftFuelTank" Type="bit" />
+    <Property Name="LeftFuelTankMax" Type="int" />
+    <Property Name="LeftFuelTankMin" Type="int" />
+    <Property Name="RightFuelTank" Type="bit" />
+    <Property Name="RightFuelTankMax" Type="int" />
+    <Property Name="RightFuelTankMin" Type="int" />
+    <Property Name="OtherFuelTank" Type="bit" />
+    <Property Name="OtherFuelTankMax" Type="int" />
+    <Property Name="OtherFuelTankMin" Type="int" />
+    <Property Name="AdBlue" Type="bit" />
+    <Property Name="AdBlueFuelTankMax" Type="int" />
+    <Property Name="NoteTank" Type="nvarchar(max)" />
+    <Property Name="VolumeEngine" Type="int" />
+    <Property Name="PowerEngine" Type="int" />
+    <Property Name="TypeFuelListId" Type="int" />
+    <Property Name="HeightFifthWheelListId" Type="int" />
+    <Property Name="LoadFifthWheel" Type="float" />
+    <Property Name="AmountAxis" Type="int" />
+    <Property Name="NoteAxis" Type="nvarchar(max)" />
+    <Property Name="AmountBattery" Type="int" />
+    <Property Name="NoteBattery" Type="nvarchar(max)" />
+    <Property Name="Color" Type="nvarchar" MaxLength="200" />
+    <Property Name="Tachograph" Type="nvarchar" MaxLength="200" />
+    <Property Name="ADR" Type="bit" />
+    <Property Name="Generator" Type="int" />
+    <Property Name="Battery" Type="int" />
+    <Property Name="Ratio" Type="float" />
+    <Property Name="BrandGearboxListId" Type="int" />
+    <Property Name="Mileage" Type="int" />
+    <Property Name="DateMileage" Type="datetime" />
+    <Property Name="GroupCarId" Type="int" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="StatusCarListId" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="CreateUserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateUserName" Type="nvarchar" MaxLength="200" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Check" Type="bit" />
+  </EntityType>
+  <EntityType Name="documents">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="docTypeID" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="dateS" Type="datetime" />
+    <Property Name="datePo" Type="datetime" />
+    <Property Name="onBoard" Type="bit" Nullable="false" />
+    <Property Name="carID" Type="int" Nullable="false" />
+    <Property Name="createUser" Type="nvarchar" MaxLength="200" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="updateUser" Type="nvarchar" MaxLength="200" />
+    <Property Name="updateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="documentTypes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="onBoard" Type="bit" Nullable="false" />
+    <Property Name="orgID" Type="int" Nullable="false" />
+    <Property Name="vehicleTypeID" Type="int" Nullable="false" />
+    <Property Name="alarm1" Type="int" />
+    <Property Name="alarm2" Type="int" />
+    <Property Name="download" Type="bit" Nullable="false" />
+    <Property Name="createUser" Type="nvarchar" MaxLength="200" />
+    <Property Name="createDate" Type="datetime" />
+    <Property Name="updateUser" Type="nvarchar" MaxLength="200" />
+    <Property Name="updateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="files">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="filesByDocuments">
+    <Key>
+      <PropertyRef Name="fileID" />
+      <PropertyRef Name="documentID" />
+    </Key>
+    <Property Name="fileID" Type="int" Nullable="false" />
+    <Property Name="documentID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="organizationLists">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="vehicleTypeLists">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_documents_Cars">
+    <End Role="cars" Type="Self.cars" Multiplicity="1" />
+    <End Role="documents" Type="Self.documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cars">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="documents">
+        <PropertyRef Name="carID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_documents_documentTypes">
+    <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="1" />
+    <End Role="documents" Type="Self.documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="documentTypes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="documents">
+        <PropertyRef Name="docTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_documentTypes_organizationLists">
+    <End Role="organizationLists" Type="Self.organizationLists" Multiplicity="1" />
+    <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organizationLists">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="documentTypes">
+        <PropertyRef Name="orgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_documentTypes_vehicleTypeLists">
+    <End Role="vehicleTypeLists" Type="Self.vehicleTypeLists" Multiplicity="1" />
+    <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicleTypeLists">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="documentTypes">
+        <PropertyRef Name="vehicleTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_filesByDocuments_documents">
+    <End Role="documents" Type="Self.documents" Multiplicity="1" />
+    <End Role="filesByDocuments" Type="Self.filesByDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="documents">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="filesByDocuments">
+        <PropertyRef Name="documentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_filesByDocuments_files">
+    <End Role="files" Type="Self.files" Multiplicity="1" />
+    <End Role="filesByDocuments" Type="Self.filesByDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="files">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="filesByDocuments">
+        <PropertyRef Name="fileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище DocModelContainer">
+    <EntitySet Name="cars" EntityType="Self.cars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="documents" EntityType="Self.documents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="documentTypes" EntityType="Self.documentTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="files" EntityType="Self.files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="filesByDocuments" EntityType="Self.filesByDocuments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="organizationLists" EntityType="Self.organizationLists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vehicleTypeLists" EntityType="Self.vehicleTypeLists" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_documents_Cars" Association="Self.FK_documents_Cars">
+      <End Role="cars" EntitySet="cars" />
+      <End Role="documents" EntitySet="documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_documents_documentTypes" Association="Self.FK_documents_documentTypes">
+      <End Role="documentTypes" EntitySet="documentTypes" />
+      <End Role="documents" EntitySet="documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_documentTypes_organizationLists" Association="Self.FK_documentTypes_organizationLists">
+      <End Role="organizationLists" EntitySet="organizationLists" />
+      <End Role="documentTypes" EntitySet="documentTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_documentTypes_vehicleTypeLists" Association="Self.FK_documentTypes_vehicleTypeLists">
+      <End Role="vehicleTypeLists" EntitySet="vehicleTypeLists" />
+      <End Role="documentTypes" EntitySet="documentTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_filesByDocuments_documents" Association="Self.FK_filesByDocuments_documents">
+      <End Role="documents" EntitySet="documents" />
+      <End Role="filesByDocuments" EntitySet="filesByDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_filesByDocuments_files" Association="Self.FK_filesByDocuments_files">
+      <End Role="files" EntitySet="files" />
+      <End Role="filesByDocuments" EntitySet="filesByDocuments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

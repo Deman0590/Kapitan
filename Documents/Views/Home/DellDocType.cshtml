@@ -1,0 +1,22 @@
+﻿@using Documents.Models
+@model DocumentTypesViewModel
+@{
+    ViewBag.Title = "DellDocType";
+}
+
+<h2>Вы уверены что хотите удалить ?</h2>
+
+@using (Html.BeginForm())
+{
+    <table class="table" style="width:500px;">
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.OrgName</td>
+            <td>@Model.VehicleTypeName</td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" value="Удалить" /> |
+        @Html.ActionLink("Назад", "DocTypes", "Home")
+    </p>
+}

@@ -1,0 +1,120 @@
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Documents.dll.config
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Documents.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Documents.pdb
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Antlr3.Runtime.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\EntityFramework.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\EntityFramework.SqlServer.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Microsoft.Web.Infrastructure.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Newtonsoft.Json.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.Helpers.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.Mvc.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.Optimization.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.Razor.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.WebPages.Deployment.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.WebPages.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.WebPages.Razor.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\WebGrease.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\EntityFramework.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\EntityFramework.SqlServer.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.Helpers.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.Mvc.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.Optimization.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.Razor.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.WebPages.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.WebPages.Deployment.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\System.Web.WebPages.Razor.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Antlr3.Runtime.pdb
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Newtonsoft.Json.xml
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\ru\EntityFramework.resources.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\ru\System.Web.Helpers.resources.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\ru\System.Web.Mvc.resources.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\ru\System.Web.Optimization.resources.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\ru\System.Web.Razor.resources.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\ru\System.Web.WebPages.resources.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\ru\System.Web.WebPages.Deployment.resources.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\ru\System.Web.WebPages.Razor.resources.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\obj\Debug\Documents.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\obj\Debug\Documents.pdb
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Ninject.dll
+c:\users\danilov.vtb\documents\visual studio 2013\Projects\Documents\Documents\bin\Ninject.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Documents.dll.config
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Documents.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Documents.pdb
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Antlr3.Runtime.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\EntityFramework.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\EntityFramework.SqlServer.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Microsoft.Web.Infrastructure.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Newtonsoft.Json.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Ninject.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.Helpers.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.Mvc.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.Optimization.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.Razor.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.WebPages.Deployment.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.WebPages.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.WebPages.Razor.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\WebGrease.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\EntityFramework.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\EntityFramework.SqlServer.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Ninject.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.Helpers.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.Mvc.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.Optimization.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.Razor.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.WebPages.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.WebPages.Deployment.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\System.Web.WebPages.Razor.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Antlr3.Runtime.pdb
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\Newtonsoft.Json.xml
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\ru\EntityFramework.resources.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\ru\System.Web.Helpers.resources.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\ru\System.Web.Mvc.resources.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\ru\System.Web.Optimization.resources.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\ru\System.Web.Razor.resources.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\ru\System.Web.WebPages.resources.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\ru\System.Web.WebPages.Deployment.resources.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\bin\ru\System.Web.WebPages.Razor.resources.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\obj\Debug\Documents.csprojResolveAssemblyReference.cache
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\obj\Debug\Documents.dll
+D:\data\WEB\Kapitan\Projects\1\Documents\Documents\obj\Debug\Documents.pdb
+C:\Users\danilov.VTB\documents\visual studio 2013\Projects\Documents\Documents\obj\Debug\Documents.csprojResolveAssemblyReference.cache
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\obj\Debug\Documents.csprojResolveAssemblyReference.cache
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\obj\Debug\Documents.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\obj\Debug\Documents.pdb
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Documents.dll.config
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Documents.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Documents.pdb
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Antlr3.Runtime.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\EntityFramework.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\EntityFramework.SqlServer.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Microsoft.Web.Infrastructure.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Newtonsoft.Json.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Ninject.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.Helpers.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.Mvc.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.Optimization.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.Razor.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.WebPages.Deployment.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.WebPages.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.WebPages.Razor.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\WebGrease.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\EntityFramework.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\EntityFramework.SqlServer.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Ninject.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.Helpers.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.Mvc.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.Optimization.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.Razor.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.WebPages.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.WebPages.Deployment.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\System.Web.WebPages.Razor.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Antlr3.Runtime.pdb
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\Newtonsoft.Json.xml
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\ru\EntityFramework.resources.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\ru\System.Web.Helpers.resources.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\ru\System.Web.Mvc.resources.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\ru\System.Web.Optimization.resources.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\ru\System.Web.Razor.resources.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\ru\System.Web.WebPages.resources.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\ru\System.Web.WebPages.Deployment.resources.dll
+D:\data\WEB\Kapitan\Projects\28.08.2015\Documents\Documents\bin\ru\System.Web.WebPages.Razor.resources.dll

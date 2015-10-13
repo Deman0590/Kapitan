@@ -1,0 +1,82 @@
+﻿@using Documents.Models
+@model DocumentTypesViewModel
+@{
+    ViewBag.Title = "EditDocType";
+}
+
+<h2>EditDocType</h2>
+
+@using (@Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.Id)
+    @Html.HiddenFor(x=>x.CreateUser)
+    @Html.HiddenFor(x=>x.CreateDate)
+    <p>
+        <b>Наименование документа:</b><br />
+        @Html.TextBoxFor(x => x.Name) @Html.ValidationMessageFor(x => x.Name)
+    </p>
+    <p>
+        <b>Наличие на борту:</b><br />
+        @Html.CheckBoxFor(x => x.OnBoard)
+    </p>
+    <p>
+        <b>Принадлежит к организаци:</b><br />
+        @Html.DropDownListFor(x => x.OrgID, ViewBag.DropDownListOrg as SelectList, "Ничего не выбрано") @Html.ValidationMessageFor(x => x.OrgID)
+    </p>
+    <p>
+        <b>Принадлежит к ТС:</b><br />
+        @Html.DropDownListFor(x => x.VehicleTypeID, ViewBag.DropDownListVehicle as SelectList, "Ничего не выбрано") @Html.ValidationMessageFor(x => x.VehicleTypeID)
+    </p>
+    <p>
+        <b>Срок действия документа:</b><br />
+        <input type="radio" name="term" value="validity"> Срочный<br>
+        <input type="radio" name="term" value="infinite"> Бессрочный<br>
+    </p>
+    <div id="hide" style="display: none;">
+        <p>
+            <span> уведомлять за: </span>
+            @Html.TextBoxFor(x => x.Alarm1) @Html.ValidationMessageFor(x => x.Alarm1)
+            <span> дней </span>
+        </p>
+        <p>
+            <span> уведомлять за: </span>
+            @Html.TextBoxFor(x => x.Alarm2) @Html.ValidationMessageFor(x => x.Alarm2)
+            <span> дней </span>
+        </p>
+    </div>
+    <p>
+        <b>Необходимость загрузка скана:</b><br />
+        @Html.CheckBoxFor(x => x.Download)
+    </p>
+    <input type="submit" name="Create" value="Сохранить" />
+    <span>| </span>  @Html.ActionLink("Отмена", "DocTypes", "Home")
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($("#Alarm1").val() != 0 || $("#Alarm2").val() != 0)
+        {
+            document.getElementById('hide').style.display = 'block';
+            $('input:radio[name=term]').filter('[value=validity]').prop('checked', true);
+        }
+
+        $('input[type=radio][name=term]').change(function () {
+            if ($("input[name='term']:checked").val() == 'validity') {
+                document.getElementById('hide').style.display = 'block';
+                $("#Alarm1").val('45');
+                $("#Alarm2").val('25');
+                //$("div[id=hide]").append('<p class="Alarm1"><input type="text" name="Alarm1"  value="45"></p>');
+                //$("div[id=hide]").append('<p class="Alarm2"><input type="text" name="Alarm2"  value="25"></p>');
+            }
+            if ($("input[name='term']:checked").val() == 'infinite') {
+                document.getElementById("hide").style.display = 'none';
+                $("#Alarm1").val('null');
+                $("#Alarm2").val('null');
+                //$("p").remove('.Alarm1');
+                //$("p").remove('.Alarm2');
+
+            }
+        });
+    });
+
+</script>

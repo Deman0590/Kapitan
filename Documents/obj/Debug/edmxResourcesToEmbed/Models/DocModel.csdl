@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="documents">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="docTypeID" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dateS" Type="DateTime" Precision="3" />
+    <Property Name="datePo" Type="DateTime" Precision="3" />
+    <Property Name="carID" Type="Int32" Nullable="false" />
+    <Property Name="createUser" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="updateUser" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="updateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="documentTypes" Relationship="Self.FK_documents_documentTypes" FromRole="documents" ToRole="documentTypes" />
+    <NavigationProperty Name="files" Relationship="Self.filesByDocuments" FromRole="documents" ToRole="files" />
+    <Property Name="onBoard" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="cars" Relationship="DocModel.FK_documents_Cars" FromRole="documents" ToRole="cars" />
+  </EntityType>
+  <EntityType Name="documentTypes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="onBoard" Type="Boolean" Nullable="false" />
+    <Property Name="orgID" Type="Int32" Nullable="false" />
+    <Property Name="vehicleTypeID" Type="Int32" Nullable="false" />
+    <Property Name="alarm1" Type="Int32" />
+    <Property Name="alarm2" Type="Int32" />
+    <Property Name="download" Type="Boolean" Nullable="false" />
+    <Property Name="createUser" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <Property Name="updateUser" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="updateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="documents" Relationship="Self.FK_documents_documentTypes" FromRole="documentTypes" ToRole="documents" />
+    <NavigationProperty Name="organizationLists" Relationship="Self.FK_documentTypes_organizationLists" FromRole="documentTypes" ToRole="organizationLists" />
+    <NavigationProperty Name="vehicleTypeLists" Relationship="Self.FK_documentTypes_vehicleTypeLists" FromRole="documentTypes" ToRole="vehicleTypeLists" />
+  </EntityType>
+  <EntityType Name="files">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="documents" Relationship="Self.filesByDocuments" FromRole="files" ToRole="documents" />
+  </EntityType>
+  <EntityType Name="organizationLists">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="documentTypes" Relationship="Self.FK_documentTypes_organizationLists" FromRole="organizationLists" ToRole="documentTypes" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vehicleTypeLists">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="documentTypes" Relationship="Self.FK_documentTypes_vehicleTypeLists" FromRole="vehicleTypeLists" ToRole="documentTypes" />
+  </EntityType>
+  <Association Name="FK_documents_documentTypes">
+    <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="1" />
+    <End Role="documents" Type="Self.documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="documentTypes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="documents">
+        <PropertyRef Name="docTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_documentTypes_organizationLists">
+    <End Role="organizationLists" Type="Self.organizationLists" Multiplicity="1" />
+    <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organizationLists">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="documentTypes">
+        <PropertyRef Name="orgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_documentTypes_vehicleTypeLists">
+    <End Role="vehicleTypeLists" Type="Self.vehicleTypeLists" Multiplicity="1" />
+    <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicleTypeLists">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="documentTypes">
+        <PropertyRef Name="vehicleTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="filesByDocuments">
+    <End Role="documents" Type="Self.documents" Multiplicity="*" />
+    <End Role="files" Type="Self.files" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DocumentsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="documents" EntityType="Self.documents" />
+    <EntitySet Name="documentTypes" EntityType="Self.documentTypes" />
+    <EntitySet Name="files" EntityType="Self.files" />
+    <EntitySet Name="organizationLists" EntityType="Self.organizationLists" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="vehicleTypeLists" EntityType="Self.vehicleTypeLists" />
+    <AssociationSet Name="FK_documents_documentTypes" Association="Self.FK_documents_documentTypes">
+      <End Role="documentTypes" EntitySet="documentTypes" />
+      <End Role="documents" EntitySet="documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_documentTypes_organizationLists" Association="Self.FK_documentTypes_organizationLists">
+      <End Role="organizationLists" EntitySet="organizationLists" />
+      <End Role="documentTypes" EntitySet="documentTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_documentTypes_vehicleTypeLists" Association="Self.FK_documentTypes_vehicleTypeLists">
+      <End Role="vehicleTypeLists" EntitySet="vehicleTypeLists" />
+      <End Role="documentTypes" EntitySet="documentTypes" />
+    </AssociationSet>
+    <AssociationSet Name="filesByDocuments" Association="Self.filesByDocuments">
+      <End Role="documents" EntitySet="documents" />
+      <End Role="files" EntitySet="files" />
+    </AssociationSet>
+    <EntitySet Name="cars" EntityType="DocModel.cars" />
+    <AssociationSet Name="FK_documents_Cars" Association="DocModel.FK_documents_Cars">
+      <End Role="cars" EntitySet="cars" />
+      <End Role="documents" EntitySet="documents" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="cars">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarNumber" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StateNumber" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ChassisNumber" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BranchListId" Type="Int32" />
+    <Property Name="DateRelease" Type="Int32" Nullable="false" />
+    <Property Name="BrandListId" Type="Int32" />
+    <Property Name="ModelId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EcologicalClassListId" Type="Int32" />
+    <Property Name="TypeCarListId" Type="Int32" />
+    <Property Name="TypeFreightListId" Type="Int32" />
+    <Property Name="OwnershipListId" Type="Int32" />
+    <Property Name="DepositId" Type="Boolean" />
+    <Property Name="OwnershipName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OwnershipDateFrom" Type="DateTime" Precision="3" />
+    <Property Name="OwnershipDateTo" Type="DateTime" Precision="3" />
+    <Property Name="OwnershipNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrailerCarNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TrailerStateNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Massa" Type="Int32" />
+    <Property Name="MaxLoad" Type="Int32" />
+    <Property Name="GearboxListId" Type="Int32" />
+    <Property Name="AmountFuelTank" Type="Int32" />
+    <Property Name="LeftFuelTank" Type="Boolean" />
+    <Property Name="LeftFuelTankMax" Type="Int32" />
+    <Property Name="LeftFuelTankMin" Type="Int32" />
+    <Property Name="RightFuelTank" Type="Boolean" />
+    <Property Name="RightFuelTankMax" Type="Int32" />
+    <Property Name="RightFuelTankMin" Type="Int32" />
+    <Property Name="OtherFuelTank" Type="Boolean" />
+    <Property Name="OtherFuelTankMax" Type="Int32" />
+    <Property Name="OtherFuelTankMin" Type="Int32" />
+    <Property Name="AdBlue" Type="Boolean" />
+    <Property Name="AdBlueFuelTankMax" Type="Int32" />
+    <Property Name="NoteTank" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VolumeEngine" Type="Int32" />
+    <Property Name="PowerEngine" Type="Int32" />
+    <Property Name="TypeFuelListId" Type="Int32" />
+    <Property Name="HeightFifthWheelListId" Type="Int32" />
+    <Property Name="LoadFifthWheel" Type="Double" />
+    <Property Name="AmountAxis" Type="Int32" />
+    <Property Name="NoteAxis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AmountBattery" Type="Int32" />
+    <Property Name="NoteBattery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Tachograph" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ADR" Type="Boolean" />
+    <Property Name="Generator" Type="Int32" />
+    <Property Name="Battery" Type="Int32" />
+    <Property Name="Ratio" Type="Double" />
+    <Property Name="BrandGearboxListId" Type="Int32" />
+    <Property Name="Mileage" Type="Int32" />
+    <Property Name="DateMileage" Type="DateTime" Precision="3" />
+    <Property Name="GroupCarId" Type="Int32" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StatusCarListId" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreateUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Check" Type="Boolean" />
+    <NavigationProperty Name="documents" Relationship="DocModel.FK_documents_Cars" FromRole="cars" ToRole="documents" />
+  </EntityType>
+  <Association Name="FK_documents_Cars">
+    <End Type="DocModel.cars" Role="cars" Multiplicity="1" />
+    <End Type="DocModel.documents" Role="documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cars">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="documents">
+        <PropertyRef Name="carID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

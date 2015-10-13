@@ -1,0 +1,26 @@
+﻿@using Documents.Models
+@model DocTypeListsViewModel
+@{
+    ViewBag.Title = "Типы документов";
+}
+
+<h2>Типы документов</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ActionLink(" Добавить новый тип", "AddDocType", "Home", null, new { @class = "glyphicon glyphicon-plus" })<br />
+    <table class="table" style="width:500px;">
+        @foreach (DocumentTypesViewModel doc in Model.DocTypeList)
+        {
+            <tr>
+                <td>@doc.Name</td>
+                <td>@doc.OrgName</td>
+                <td>@doc.VehicleTypeName</td>
+                <td>
+                    @Html.ActionLink(" ", "EditDocType", "Home", new { id = doc.Id }, new { @class = "glyphicon glyphicon-pencil" })
+                    @Html.ActionLink(" ", "DellDocType", "Home", new { id = doc.Id }, new { @class = "glyphicon glyphicon-remove" })
+                </td>
+            </tr>
+        }
+    </table>
+}
