@@ -18,6 +18,7 @@ namespace Documents.Models
         public organizationLists()
         {
             this.documentTypes = new HashSet<documentTypes>();
+            this.cars = new HashSet<cars>();
         }
     
         public int id { get; set; }
@@ -25,5 +26,7 @@ namespace Documents.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<documentTypes> documentTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cars> cars { get; set; }
     }
 }

@@ -7,16 +7,19 @@
 <h2>Список автомобилей</h2>
 @using (@Html.BeginForm())
 {
-    <table class="table" style="width:500px;">
+    <table class="table table-hover table-condensed" style="width:500px;">
         @foreach (CarViewModel car in Model.CarList)
         {
             <tr>
                 <td class="col-xs-2">@car.CarNumber</td>
                 <td class="col-xs-3">@car.StateNumber</td>
                 <td class="col-xs-7">
-                    @Html.ActionLink("Просмотр действующих документов", "ActiveDocs", "Home")<br />
-                    @Html.ActionLink("Просмотр всех документов", "AllDocs", "Home")<br />
-                    @Html.ActionLink("Add doc", "AddDoc", "Home", new { carId = car.Id },null)
+                    @Html.ActionLink("Просмотр действующих документов", "CarActiveDocumment", "Home", new { carId = car.Id }, null)<br />
+                    @Html.ActionLink("Просмотр всех документов", "CarAllDocuments", "Home", new { carId = car.Id }, null)<br />
+                    @*@if (User.IsInRole("...") || User.IsInRole("...") || User.IsInRole("..."))
+                    {*@
+                        @Html.ActionLink("Добавить документ", "AddDoc", "Home", new { carId = car.Id }, null)
+                    @*}*@
                 </td>
             </tr>
         }

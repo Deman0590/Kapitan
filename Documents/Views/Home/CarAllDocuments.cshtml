@@ -1,0 +1,113 @@
+﻿@using Documents.Models
+@model CarAllDocumentsViewModel
+@{
+    ViewBag.Title = "CarAllDocuments";
+}
+
+<h2>Все документы по автомобилю</h2>
+@using (@Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-2">
+            <label>Номер борта</label>
+        </div>
+        <div class="col-md-4">
+            <p>@Model.CarNumber</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label>Гос. номер</label>
+        </div>
+        <div class="col-md-4">
+            <p>@Model.StateNumber</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label>Организация</label>
+        </div>
+        <div class="col-md-4">
+            <p>@Model.OrgName</p>
+        </div>
+    </div>
+    <table class="table table-hover table-condensed" >
+        <tr>
+            <th>
+                Тип документа
+            </th>
+            <th>
+                Наименование\№ документа
+            </th>
+            <th>
+                Сроки действия
+            </th>
+            <th>
+                Наличие на борту
+            </th>
+            <th></th>
+        </tr>
+        @foreach (DocumentViewModel doc in Model.DocList)
+        {
+            <tr>
+                <td>
+                    @doc.DocTypeName
+                </td>
+                <td>
+                    @doc.DocName
+                </td>
+                @if (doc.DateS != null && doc.DatePo != null)
+                {
+                    if (doc.Alarm1 != null && doc.Alarm2 != null)
+                    {
+                        if (((TimeSpan)(doc.DatePo - DateTime.Today)).Days > doc.Alarm2 && ((TimeSpan)(doc.DatePo - DateTime.Today)).Days <= doc.Alarm1)
+                        {
+                            <td style="background-color:#00ff21;">
+                                @doc.period
+                            </td>
+                        }
+                        if (((TimeSpan)(doc.DatePo - DateTime.Today)).Days > 0 && ((TimeSpan)(doc.DatePo - DateTime.Today)).Days <= doc.Alarm2)
+                        {
+                            <td style="background-color:#ffd800">
+                                @doc.period
+                            </td>
+                        }
+                        if (((TimeSpan)(doc.DatePo - DateTime.Today)).Days <= 0)
+                        {
+                            <td style="background-color:#ff0000;">
+                                @doc.period
+                            </td>
+                        }
+                    }
+                    else
+                    {
+                        <td>
+                            @doc.period
+                        </td>
+                    }
+                }
+                else
+                {
+                    <td><span> Бессрочный </span></td>
+                }
+                <td>
+                    @if (@doc.OnBoard == true)
+                    {
+                        <span>Да</span>
+                    }
+                    else
+                    {
+                        <span>Нет</span>
+                    }
+                </td>
+                <td>
+                    @foreach (files s in doc.FilesLink)
+                    {
+
+                        @Html.ActionLink(" ", "Download", "Home", new { Link = s.link, Name = s.name }, new { @class = "glyphicon glyphicon-download-alt", @title = s.name })<br />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}

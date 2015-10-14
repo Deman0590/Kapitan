@@ -11,8 +11,11 @@ namespace Documents.Repository.Interfaces
     {
         IEnumerable<files> GetFiles();
         files GetFileById(int id);
-        void CreateFile(string link);
+        int CreateFile(string link, string name);
         void DeleteFile(int id);
-        void SaveFile(files file);
+        int SaveFile(files file);
+        IEnumerable<files> GetFileLinksForDocument(int docId);
+        int[] GetFilesForDocument(int id);
+        void DellFilesFromDocument(int docId, int[] filesId);
     }
 }

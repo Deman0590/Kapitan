@@ -106,6 +106,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="filesByDocuments">
     <Key>
@@ -139,6 +140,18 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
+  <Association Name="FK_cars_organizationLists">
+    <End Role="organizationLists" Type="Self.organizationLists" Multiplicity="0..1" />
+    <End Role="cars" Type="Self.cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organizationLists">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cars">
+        <PropertyRef Name="BranchListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_documents_Cars">
     <End Role="cars" Type="Self.cars" Multiplicity="1" />
     <End Role="documents" Type="Self.documents" Multiplicity="*" />
@@ -220,6 +233,10 @@
     <EntitySet Name="organizationLists" EntityType="Self.organizationLists" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vehicleTypeLists" EntityType="Self.vehicleTypeLists" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_cars_organizationLists" Association="Self.FK_cars_organizationLists">
+      <End Role="organizationLists" EntitySet="organizationLists" />
+      <End Role="cars" EntitySet="cars" />
+    </AssociationSet>
     <AssociationSet Name="FK_documents_Cars" Association="Self.FK_documents_Cars">
       <End Role="cars" EntitySet="cars" />
       <End Role="documents" EntitySet="documents" />

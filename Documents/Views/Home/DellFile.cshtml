@@ -1,0 +1,11 @@
+﻿@using Documents.Models
+@model DocumentViewModel
+@{
+    Layout = null;
+}
+
+@foreach (files f in Model.FilesLink)
+{
+    @Html.ActionLink(@f.name, "Download", "Home", new { Link = f.link, Name = f.name }, null) <span>-</span> @Html.ActionLink("Удалить безвозвратно", "AddDoc", "Home", new { carId = Model.Id }, new { @class = "btn btn-primary btn-xs active" })<br />
+}
+

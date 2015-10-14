@@ -13,5 +13,8 @@ namespace Documents.Models
         public string ChassisNumber { get; set; }
         public int DateRelease { get; set; }
         public int? BranchListId { get; set; }
+        public string BranchName { get; set; }
+        public List<DocumentViewModel> DocList { get; set; }
+        public string color { get; set; }
     }
 }

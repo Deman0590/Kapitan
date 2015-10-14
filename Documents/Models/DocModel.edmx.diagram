@@ -17,6 +17,7 @@
         <AssociationConnector Association="DocModel.filesByDocuments" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DocModel.cars" Width="1.5" PointX="9.625" PointY="1.125" />
         <AssociationConnector Association="DocModel.FK_documents_Cars" />
+        <AssociationConnector Association="DocModel.FK_cars_organizationLists" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,180 @@
+﻿@using Documents.Models
+@model CarListViewModel
+@{
+    ViewBag.Title = "AllDocuments";
+}
+
+@Html.ActionLink("PDF", "CreateReport", "Home", new { format = "pdf" }, null) &nbsp;|&nbsp;
+@Html.ActionLink("Exel", "CreateReport", "Home", new { format = "excel" }, null) <br />
+@using (@Html.BeginForm())
+{
+    <a href="javascript://" onclick="showHide('hide');">Отоброзить/скрыть филтры</a>
+    <div id="hide" style="display: none;">
+        <p class="inline">
+            <b>Сроки действия документа</b><br />
+            <b>С:</b><br />
+            @Html.TextBoxFor(x => x.DateS, "{0:dd'/'MM'/'yyyy}", new { @class = "form-control" }) @Html.ValidationMessageFor(x => x.DateS)
+        </p>
+        <p class="inline">
+            <b>По:</b><br />
+            @Html.TextBoxFor(x => x.DatePo, "{0:dd'/'MM'/'yyyy}", new { @class = "form-control" }) @Html.ValidationMessageFor(x => x.DatePo)
+        </p>
+        <p class="inline">
+            <b>Предприятие:</b><br />
+            @Html.DropDownListFor(x => x.OrgID, ViewBag.DropDownListOrg as SelectList, "Все", new { @class = "form-control" })@Html.ValidationMessageFor(x => x.OrgID)
+        </p>
+        <p class="inline">
+            <input type="submit" value="Отобразить" class="btn btn-primary" />
+        </p>
+    </div>
+    <div>
+        <table class="table table-hover table-condensed" id="tblNeedsScrolling" style="margin-bottom:0px;">
+            <thead>
+                <tr>
+                    <th>№ П.П.</th>
+                    <th>Бортовой номер</th>
+                    <th>Гос. номер</th>
+                    <th>Организация</th>
+                    @foreach (documentTypes dt in ViewBag.DocTypes)
+                    {
+                        <th>
+                            @dt.name
+                        </th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{int rowNo = 0;}
+                @if (Model != null)
+                {
+                    foreach (CarViewModel car in Model.CarList)
+                    {
+                        if (car.DocList != null)
+                        {
+                            <tr>
+                                <td>@(rowNo += 1)</td>
+                                <td style="background-color: @car.color;">@Html.ActionLink(@car.CarNumber, "CarActiveDocumment", "Home", new { carId = car.Id }, null)</td>
+                                <td>@car.StateNumber</td>
+                                <td>@car.BranchName</td>
+                                @foreach (DocumentViewModel doc in car.DocList)
+                                {
+                                    if (doc.DatePo != null)
+                                    {
+                                        <td style="background-color:@doc.color;">@doc.DocName </td>
+                                    }
+                                    else
+                                    {
+                                        if (doc.DocName != null)
+                                        {
+                                            <td>@doc.DocName</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                    }
+                                }
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@*<script type="text/javascript">
+    function scrolify(tblAsJQueryObject, height) {
+        var oTbl = tblAsJQueryObject;
+        // для очень длинных таблиц вы можете удалить 4 следующие линии
+        // и поместить таблицу в ДИВ и назначить ему высоту и свойство overflow
+        var oTblDiv = $("<div />");
+        oTblDiv.css('height', height);
+        oTblDiv.css('overflow', 'auto');
+        oTbl.wrap(oTblDiv);
+        // сохраняем оригинальную ришину
+        oTbl.attr("data-item-original-width", oTbl.width());
+        oTbl.find('thead tr td').each(function () {
+            $(this).attr("data-item-original-width", $(this).width());
+        });
+        oTbl.find('tbody tr:eq(0) td').each(function () {
+            $(this).attr("data-item-original-width", $(this).width());
+        });
+        // клонируем оригинальную таблицу
+        var newTbl = oTbl.clone();
+        // удаляем заголовки из оригинальной таблицы
+        oTbl.find('thead tr').remove();
+        // удаляем тело таблицы из новой таблицы
+        newTbl.find('tbody tr').remove();
+        oTbl.parent().parent().prepend(newTbl);
+        newTbl.wrap("<div />");
+        // заменяем исходную ширину столбца
+        newTbl.width(newTbl.attr('data-item-original-width'));
+        newTbl.find('thead tr td').each(function () {
+            $(this).width($(this).attr("data-item-original-width"));
+        });
+        oTbl.width(oTbl.attr('data-item-original-width'));
+        oTbl.find('tbody tr:eq(0) td').each(function () {
+            $(this).width($(this).attr("data-item-original-width"));
+        });
+    }
+    $(document).ready(function () {
+        scrolify($('#tblNeedsScrolling'), 700); // 160 is height
+    });
+</script>*@
+<script type="text/javascript">
+    function showHide(id) {
+        if (document.getElementById(id).style.display == 'block') {
+            document.getElementById(id).style.display = 'none';
+        }
+        else {
+            document.getElementById(id).style.display = 'block';
+        }
+        //document.getElementById(id).style.display = document.getElementById(id).style.display == 'block' ? 'none' : 'block';
+    }
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href='@Url.Content("~/Content/themes/base/all.css")' rel="stylesheet" type="text/css" />
+    <script src='@Url.Content("~/Scripts/jquery-ui-1.11.4.min.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/Scripts/mvcfoolproof.unobtrusive.min.js" )'></script>
+    <script src='@Url.Content("~/Scripts/MvcFoolproofJQueryValidation.min.js" )'></script>
+    <script src='@Url.Content("~/Scripts/MvcFoolproofValidation.min.js" )'></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#DateS").datepicker({ dateFormat: 'dd/mm/yy' });
+            $("#DatePo").datepicker({ dateFormat: 'dd/mm/yy' });
+            $.datepicker.regional['ru'] = {
+                prevText: 'Пред',
+                nextText: 'След',
+                monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн',
+                'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+                dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+                dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
+                dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                weekHeader: 'Не',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['ru']);
+            $.validator.addMethod('date',
+                function (value, element) {
+                    var ok = true;
+                    try {
+                        $.datepicker.parseDate('dd/mm/yy', value);
+                    }
+                    catch (err) {
+                        ok = false;
+                    }
+                    return ok;
+                });
+        });
+    </script>
+}

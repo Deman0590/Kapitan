@@ -56,5 +56,50 @@ namespace Documents.Repository.Implementations
                 dc.Entry(docType).State = EntityState.Modified;
             dc.SaveChanges();
         }
+
+
+        public IEnumerable<documentTypes> RequiredDocumentTypes(int carId, int orgId)
+        {
+            //return (from dt in dc.documentTypes
+            //        join d in dc.documents on dt.id equals d.docTypeID into t
+            //        from rt in t.DefaultIfEmpty()
+            //        where dt.onBoard == true
+            //        select dt);
+
+            //return (from dt in dc.documentTypes
+            //        where dt.onBoard == true
+            //        select dt into docT
+            //        join doc in
+            //            (from d in dc.documents where d.carID == carId && (DateTime.Equals(d.datePo, null) || d.datePo >= DateTime.Now) select d)
+            //        on docT.id equals doc.docTypeID into t
+            //        select docT);
+            return (from dt in
+                        (
+                            (from DocumentTypes in dc.documentTypes
+                             where
+                               DocumentTypes.onBoard == true &&
+                               DocumentTypes.orgID == orgId
+                             select new
+                             {
+                                 DocumentTypes
+                             }))
+                    join d in
+                        (
+                            (from Documents1 in dc.documents
+                             where
+                               Documents1.carID == carId &&
+                               (Documents1.datePo == null ||
+                               Documents1.datePo >= DateTime.Now)
+                             select new
+                             {
+                                 Documents1
+                             })) on new { Id = dt.DocumentTypes.id } equals new { Id = d.Documents1.docTypeID } into d_join
+                    from d in d_join.DefaultIfEmpty()
+                    where
+                      d.Documents1.id == null
+                    select 
+                        dt.DocumentTypes
+                    );
+        }
     }
 }

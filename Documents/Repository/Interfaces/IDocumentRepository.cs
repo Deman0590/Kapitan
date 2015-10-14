@@ -10,11 +10,13 @@ namespace Documents.Repository.Interfaces
     public interface IDocumentRepository
     {
         IEnumerable<documents> GetDocuments();
+        IEnumerable<documents> GetActiveDocuments();
         IEnumerable<documents> GetDocumentsByCar(int carID);
-        IEnumerable<documents> GetActiveDocumentsByCar(int carID, DateTime dateS, DateTime datePo);
+        IEnumerable<documents> GetActiveDocumentsByCar(int carID);
         documents GetDocumentById(int id);
-        void CreateDocument(int docTypeID, string name, DateTime? dateS, DateTime? datePo, bool onBoard, int carId, string createUser, DateTime? createDate, string updateUser, DateTime? updateDate);
+        int CreateDocument(int docTypeID, string name, DateTime? dateS, DateTime? datePo, bool onBoard, int carId, string createUser, DateTime? createDate, string updateUser, DateTime? updateDate);
         void DeleteDocument(int id);
-        void SaveDocument(documents doc);
+        int SaveDocument(documents doc);
+        void AddDocumentsToFile(int[] filesId, int docId);
     }
 }

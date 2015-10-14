@@ -8,8 +8,14 @@
 
 @using (Html.BeginForm())
 {
-    @Html.ActionLink(" Добавить новый тип", "AddDocType", "Home", null, new { @class = "glyphicon glyphicon-plus" })<br />
-    <table class="table" style="width:500px;">
+    @Html.ActionLink(" Добавить новый тип", "AddDocType", "Home", null, new { @class = "btn btn-primary btn-xs active" })<br />
+    <table class="table table-hover table-condensed">
+        <tr>
+            <th>Наименование документа</th>
+            <th>Организация</th>
+            <th>ТС</th>
+            <th></th>
+        </tr>
         @foreach (DocumentTypesViewModel doc in Model.DocTypeList)
         {
             <tr>
@@ -17,8 +23,11 @@
                 <td>@doc.OrgName</td>
                 <td>@doc.VehicleTypeName</td>
                 <td>
+                    @*@if (User.IsInRole("...") || User.IsInRole("...") || User.IsInRole("..."))
+                     {*@
                     @Html.ActionLink(" ", "EditDocType", "Home", new { id = doc.Id }, new { @class = "glyphicon glyphicon-pencil" })
                     @Html.ActionLink(" ", "DellDocType", "Home", new { id = doc.Id }, new { @class = "glyphicon glyphicon-remove" })
+                    @*}*@
                 </td>
             </tr>
         }

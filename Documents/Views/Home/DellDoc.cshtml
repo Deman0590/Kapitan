@@ -1,0 +1,36 @@
+﻿@using Documents.Models
+@model DocumentViewModel
+@{
+    ViewBag.Title = "DellDoc";
+}
+
+<h2>DellDoc</h2>
+
+@using (@Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+    <h3>Запись и все прикрепленные файлы будут удалены !!!</h3>
+    <table class="table table-hover table-condensed">
+        <tr>
+            <th>Название/№ документа</th>
+            <th>Тип документа</th>
+            <th>Сроки действия</th>
+        </tr>
+        <tr>
+            <td>@Model.DocName</td>
+            <td>@Model.DocTypeName</td>
+            <td>@Model.period</td>
+        </tr>
+    </table>
+    <p>
+        @foreach (files s in Model.FilesLink)
+        {
+
+            @Html.ActionLink(s.name, "Download", "Home", new { Link = s.link, Name = s.name }, null)<br />
+        }
+    </p>
+    <p>
+        <input type="submit" value="Удалить" class="btn btn-primary" />
+        @Html.ActionLink("Назад", "CarActiveDocumment", "Home", new { carId = Model.CarId }, new { @class = "btn btn-default btn-default active" })
+    </p>
+}

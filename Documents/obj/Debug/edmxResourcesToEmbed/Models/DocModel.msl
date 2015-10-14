@@ -39,6 +39,7 @@
     <EntitySetMapping Name="files">
       <EntityTypeMapping TypeName="DocModel.files">
         <MappingFragment StoreEntitySet="files">
+          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="link" ColumnName="link" />
         </MappingFragment>

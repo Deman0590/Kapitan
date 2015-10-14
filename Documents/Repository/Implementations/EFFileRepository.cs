@@ -22,13 +22,14 @@ namespace Documents.Repository.Implementations
             return dc.files.FirstOrDefault(x => x.id == id);
         }
 
-        public void CreateFile(string link)
+        public int CreateFile(string link, string name)
         {
-            files f = new files 
+            files f = new files
             {
-                link = link
+                link = link,
+                name = name
             };
-            SaveFile(f);
+            return SaveFile(f);
         }
 
         public void DeleteFile(int id)
@@ -42,14 +43,42 @@ namespace Documents.Repository.Implementations
                 }
                 dc.files.Remove(file);
             }
+            dc.SaveChanges();
         }
 
-        public void SaveFile(Models.files file)
+        public int SaveFile(Models.files file)
         {
             if (file.id == 0)
                 dc.files.Add(file);
             else
                 dc.Entry(file).State = EntityState.Modified;
+            dc.SaveChanges();
+            return file.id;
+        }
+
+        public IEnumerable<files> GetFileLinksForDocument(int docId)
+        {
+            return dc.documents.FirstOrDefault(x => x.id == docId).files;
+        }
+        public int[] GetFilesForDocument(int id)
+        {
+            return dc.documents.FirstOrDefault(x => x.id == id).files.Select(x => x.id).ToArray();
+        }
+
+
+        public void DellFilesFromDocument(int docId, int[] filesId)
+        {
+            var doc = dc.documents.FirstOrDefault(x => x.id == docId);
+            if (doc != null)
+            {
+                foreach (int fileId in filesId)
+                {
+                    var file = dc.files.FirstOrDefault(x => x.id == fileId);
+                    if (file != null)
+                        file.documents.Remove(doc);
+                }
+            }
+            dc.SaveChanges();
         }
     }
 }

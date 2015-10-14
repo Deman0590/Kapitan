@@ -21,9 +21,9 @@ namespace Documents.Repository.Implementations
             return dc.documents.Where(x => x.carID == carID);
         }
 
-        public IEnumerable<Models.documents> GetActiveDocumentsByCar(int carID, DateTime dateS, DateTime datePo)
+        public IEnumerable<Models.documents> GetActiveDocumentsByCar(int carID)
         {
-            return dc.documents.Where(x => x.carID == carID && x.dateS >= dateS && x.datePo <= datePo);
+            return dc.documents.Where(x => x.carID == carID && (x.datePo >= DateTime.Now || x.datePo == null));
         }
 
         public Models.documents GetDocumentById(int id)
@@ -31,7 +31,7 @@ namespace Documents.Repository.Implementations
             return dc.documents.FirstOrDefault(x => x.id == id);
         }
 
-        public void CreateDocument(int docTypeID, string name, DateTime? dateS, DateTime? datePo, bool onBoard, int carId, string createUser, DateTime? createDate, string updateUser, DateTime? updateDate)
+        public int CreateDocument(int docTypeID, string name, DateTime? dateS, DateTime? datePo, bool onBoard, int carId, string createUser, DateTime? createDate, string updateUser, DateTime? updateDate)
         {
             documents doc = new documents
             {
@@ -46,7 +46,8 @@ namespace Documents.Repository.Implementations
                 updateUser = updateUser,
                 updateDate = updateDate
             };
-            SaveDocument(doc);
+            return SaveDocument(doc);
+             
         }
 
         public void DeleteDocument(int id)
@@ -57,14 +58,37 @@ namespace Documents.Repository.Implementations
             dc.SaveChanges();
         }
 
-        public void SaveDocument(Models.documents doc)
+        public int SaveDocument(Models.documents doc)
         {
             if (doc.id == 0)
                 dc.documents.Add(doc);
             else
                 dc.Entry(doc).State = EntityState.Modified;
             dc.SaveChanges();
+            return doc.id;
 
+        }
+        public void AddDocumentsToFile(int[] filesId, int docId)
+        {
+            var doc = dc.documents.FirstOrDefault(x => x.id == docId);
+            if (doc != null)
+            {
+                foreach(int fileId in filesId)
+                {
+                    var file = dc.files.FirstOrDefault(x => x.id == fileId);
+                    if(file != null)
+                    {
+                        file.documents.Add(doc);
+                    }
+                }
+            }
+            dc.SaveChanges();
+        }
+
+
+        public IEnumerable<documents> GetActiveDocuments()
+        {
+            return dc.documents.Where(x => x.datePo >= DateTime.Now);
         }
     }
 }

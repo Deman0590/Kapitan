@@ -111,6 +111,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="filesByDocuments">
           <Key>
@@ -144,6 +145,18 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <Association Name="FK_cars_organizationLists">
+          <End Role="organizationLists" Type="Self.organizationLists" Multiplicity="0..1" />
+          <End Role="cars" Type="Self.cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organizationLists">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cars">
+              <PropertyRef Name="BranchListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_documents_Cars">
           <End Role="cars" Type="Self.cars" Multiplicity="1" />
           <End Role="documents" Type="Self.documents" Multiplicity="*" />
@@ -225,6 +238,10 @@
           <EntitySet Name="organizationLists" EntityType="Self.organizationLists" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vehicleTypeLists" EntityType="Self.vehicleTypeLists" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_cars_organizationLists" Association="Self.FK_cars_organizationLists">
+            <End Role="organizationLists" EntitySet="organizationLists" />
+            <End Role="cars" EntitySet="cars" />
+          </AssociationSet>
           <AssociationSet Name="FK_documents_Cars" Association="Self.FK_documents_Cars">
             <End Role="cars" EntitySet="cars" />
             <End Role="documents" EntitySet="documents" />
@@ -300,6 +317,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="documents" Relationship="Self.filesByDocuments" FromRole="files" ToRole="documents" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="organizationLists">
           <Key>
@@ -308,6 +326,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="documentTypes" Relationship="Self.FK_documentTypes_organizationLists" FromRole="organizationLists" ToRole="documentTypes" />
+          <NavigationProperty Name="cars" Relationship="DocModel.FK_cars_organizationLists" FromRole="organizationLists" ToRole="cars" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -395,6 +414,10 @@
             <End Role="cars" EntitySet="cars" />
             <End Role="documents" EntitySet="documents" />
           </AssociationSet>
+          <AssociationSet Name="FK_cars_organizationLists" Association="DocModel.FK_cars_organizationLists">
+            <End Role="organizationLists" EntitySet="organizationLists" />
+            <End Role="cars" EntitySet="cars" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="cars">
           <Key>
@@ -463,6 +486,7 @@
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="Check" Type="Boolean" />
           <NavigationProperty Name="documents" Relationship="DocModel.FK_documents_Cars" FromRole="cars" ToRole="documents" />
+          <NavigationProperty Name="organizationLists" Relationship="DocModel.FK_cars_organizationLists" FromRole="cars" ToRole="organizationLists" />
         </EntityType>
         <Association Name="FK_documents_Cars">
           <End Type="DocModel.cars" Role="cars" Multiplicity="1" />
@@ -473,6 +497,18 @@
             </Principal>
             <Dependent Role="documents">
               <PropertyRef Name="carID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cars_organizationLists">
+          <End Type="DocModel.organizationLists" Role="organizationLists" Multiplicity="0..1" />
+          <End Type="DocModel.cars" Role="cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organizationLists">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cars">
+              <PropertyRef Name="BranchListId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -520,6 +556,7 @@
           <EntitySetMapping Name="files">
             <EntityTypeMapping TypeName="DocModel.files">
               <MappingFragment StoreEntitySet="files">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="link" ColumnName="link" />
               </MappingFragment>
