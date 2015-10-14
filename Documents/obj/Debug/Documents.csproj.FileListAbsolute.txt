@@ -342,3 +342,49 @@ I:\data\WEB\Kapitan\Projects\11.09.2015\Documents\Documents\obj\Debug\RdlCompile
 I:\data\WEB\Kapitan\Projects\11.09.2015\Documents\Documents\obj\Debug\RdlCompile.compiled
 I:\data\WEB\Kapitan\Projects\11.09.2015\Documents\Documents\obj\Debug\Documents.dll
 I:\data\WEB\Kapitan\Projects\11.09.2015\Documents\Documents\obj\Debug\Documents.pdb
+D:\Kapitan Projects\Documents\Documents\obj\Debug\RdlCompile.cache
+D:\Kapitan Projects\Documents\Documents\obj\Debug\RdlCompile.compiled
+D:\Kapitan Projects\Documents\Documents\obj\Debug\Documents.dll
+D:\Kapitan Projects\Documents\Documents\bin\Documents.dll.config
+D:\Kapitan Projects\Documents\Documents\bin\Documents.dll
+D:\Kapitan Projects\Documents\Documents\bin\Documents.pdb
+D:\Kapitan Projects\Documents\Documents\bin\Antlr3.Runtime.dll
+D:\Kapitan Projects\Documents\Documents\bin\EntityFramework.dll
+D:\Kapitan Projects\Documents\Documents\bin\EntityFramework.SqlServer.dll
+D:\Kapitan Projects\Documents\Documents\bin\Microsoft.ReportViewer.Common.dll
+D:\Kapitan Projects\Documents\Documents\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+D:\Kapitan Projects\Documents\Documents\bin\Microsoft.ReportViewer.WebForms.DLL
+D:\Kapitan Projects\Documents\Documents\bin\Microsoft.Web.Infrastructure.dll
+D:\Kapitan Projects\Documents\Documents\bin\MVC Foolproof Validation.dll
+D:\Kapitan Projects\Documents\Documents\bin\Newtonsoft.Json.dll
+D:\Kapitan Projects\Documents\Documents\bin\Ninject.dll
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.Helpers.dll
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.Mvc.dll
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.Optimization.dll
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.Razor.dll
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.WebPages.Deployment.dll
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.WebPages.dll
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.WebPages.Razor.dll
+D:\Kapitan Projects\Documents\Documents\bin\WebGrease.dll
+D:\Kapitan Projects\Documents\Documents\bin\EntityFramework.xml
+D:\Kapitan Projects\Documents\Documents\bin\EntityFramework.SqlServer.xml
+D:\Kapitan Projects\Documents\Documents\bin\Ninject.xml
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.Helpers.xml
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.Mvc.xml
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.Optimization.xml
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.Razor.xml
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.WebPages.xml
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.WebPages.Deployment.xml
+D:\Kapitan Projects\Documents\Documents\bin\System.Web.WebPages.Razor.xml
+D:\Kapitan Projects\Documents\Documents\bin\Antlr3.Runtime.pdb
+D:\Kapitan Projects\Documents\Documents\bin\Newtonsoft.Json.xml
+D:\Kapitan Projects\Documents\Documents\bin\ru\EntityFramework.resources.dll
+D:\Kapitan Projects\Documents\Documents\bin\ru\System.Web.Helpers.resources.dll
+D:\Kapitan Projects\Documents\Documents\bin\ru\System.Web.Mvc.resources.dll
+D:\Kapitan Projects\Documents\Documents\bin\ru\System.Web.Optimization.resources.dll
+D:\Kapitan Projects\Documents\Documents\bin\ru\System.Web.Razor.resources.dll
+D:\Kapitan Projects\Documents\Documents\bin\ru\System.Web.WebPages.resources.dll
+D:\Kapitan Projects\Documents\Documents\bin\ru\System.Web.WebPages.Deployment.resources.dll
+D:\Kapitan Projects\Documents\Documents\bin\ru\System.Web.WebPages.Razor.resources.dll
+D:\Kapitan Projects\Documents\Documents\obj\Debug\Documents.pdb
+D:\Kapitan Projects\Documents\Documents\obj\Debug\Documents.csprojResolveAssemblyReference.cache

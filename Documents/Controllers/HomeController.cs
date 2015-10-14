@@ -35,7 +35,7 @@ namespace Documents.Controllers
                     Id = t.id,
                     Name = t.name,
                     OnBoard = t.onBoard,
-                    OrgName = t.organizationLists.name,
+                    OrgName = (t.orgID != null) ? t.organizationLists.name : "Для всех организаций",
                     VehicleTypeName = t.vehicleTypeLists.name,
                     Alarm1 = t.alarm1,
                     Alarm2 = t.alarm2,
@@ -122,7 +122,8 @@ namespace Documents.Controllers
         //[Authorize(Roles = "..., ..., ...")]
         public ActionResult AddDoc(int carId)
         {
-            ViewBag.DocTypeslist = new SelectList(dataManager.DocumentTypes.GetDocumentTypes(), "id", "Name", null);
+            int orgId = Convert.ToInt32(dataManager.Cars.GetCarById(carId).BranchListId);
+            ViewBag.DocTypeslist = new SelectList(dataManager.DocumentTypes.GetDocumentTypesByOrg(orgId), "id", "Name", null);
             return View(new DocumentViewModel { CarId = carId });
         }
         //[Authorize(Roles = "..., ..., ...")]
@@ -396,7 +397,7 @@ namespace Documents.Controllers
                 {
                     int colorPrior = 0;
                     int maxColorProir = 0;
-                    IEnumerable<documents> docs = (Ds != null && Dp != null) ? dataManager.Documents.GetDocumentsByCar(c.CarId).Where(x => x.datePo >= Ds && x.datePo <= Dp).OrderBy(x=>x.datePo) : dataManager.Documents.GetDocumentsByCar(c.CarId).OrderBy(x=>x.datePo);
+                    IEnumerable<documents> docs = (Ds != null && Dp != null) ? dataManager.Documents.GetDocumentsByCar(c.CarId).Where(x => x.datePo >= Ds && x.datePo <= Dp).OrderBy(x => x.datePo) : dataManager.Documents.GetDocumentsByCar(c.CarId).OrderBy(x => x.datePo);
 
                     CarViewModel car = new CarViewModel();
                     car.Id = c.CarId;
@@ -445,7 +446,7 @@ namespace Documents.Controllers
                                         d.DocName = "Есть";
                                     }
                                 }
-                                if (dt.orgID != c.BranchListId)
+                                if (dt.orgID != c.BranchListId && dt.orgID != null)
                                 {
                                     d.DocName = "Не нужно";
                                 }
@@ -520,7 +521,7 @@ namespace Documents.Controllers
                                 else
                                     report.OwnershipNote = "Есть";
                             }
-                            if (docT.orgID != car.BranchListId)
+                            if (docT.orgID != car.BranchListId && docT.orgID != null)
                                 report.OwnershipNote = "Не нужно";
                         }
                         l.Add(report);

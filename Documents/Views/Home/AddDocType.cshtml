@@ -20,7 +20,7 @@
     </p>
     <p>
         <b>Принадлежит к организаци:</b><br />
-        @Html.DropDownListFor(x => x.OrgID, ViewBag.DropDownListOrg as SelectList, "Ничего не выбрано", new { @class = "form-control" }) @Html.ValidationMessageFor(x => x.OrgID)
+        @Html.DropDownListFor(x => x.OrgID, ViewBag.DropDownListOrg as SelectList, "Для всех организаций", new { @class = "form-control" }) 
     </p>
     <p>
         <b>Принадлежит к ТС:</b><br />

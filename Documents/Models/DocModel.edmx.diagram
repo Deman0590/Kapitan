@@ -12,12 +12,12 @@
         <EntityTypeShape EntityType="DocModel.sysdiagrams" Width="1.5" PointX="5.125" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DocModel.vehicleTypeLists" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
         <AssociationConnector Association="DocModel.FK_documents_documentTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="DocModel.FK_documentTypes_organizationLists" ManuallyRouted="false" />
         <AssociationConnector Association="DocModel.FK_documentTypes_vehicleTypeLists" ManuallyRouted="false" />
         <AssociationConnector Association="DocModel.filesByDocuments" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DocModel.cars" Width="1.5" PointX="9.625" PointY="1.125" />
         <AssociationConnector Association="DocModel.FK_documents_Cars" />
         <AssociationConnector Association="DocModel.FK_cars_organizationLists" />
+        <AssociationConnector Association="DocModel.FK_documentTypes_organizationLists" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

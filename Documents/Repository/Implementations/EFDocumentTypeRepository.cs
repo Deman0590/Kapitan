@@ -21,7 +21,7 @@ namespace Documents.Repository.Implementations
             return dc.documentTypes.FirstOrDefault(x => x.id == id);
         }
 
-        public void CreateDocumentType(string name, bool onBoard, int orgId, int vechicleTypeId, int? alarm1, int? alarm2, bool download, string createUser, DateTime? createDate, string updateUser, DateTime? updateDate)
+        public void CreateDocumentType(string name, bool onBoard, int? orgId, int vechicleTypeId, int? alarm1, int? alarm2, bool download, string createUser, DateTime? createDate, string updateUser, DateTime? updateDate)
         {
             documentTypes docType = new documentTypes
             {
@@ -60,25 +60,12 @@ namespace Documents.Repository.Implementations
 
         public IEnumerable<documentTypes> RequiredDocumentTypes(int carId, int orgId)
         {
-            //return (from dt in dc.documentTypes
-            //        join d in dc.documents on dt.id equals d.docTypeID into t
-            //        from rt in t.DefaultIfEmpty()
-            //        where dt.onBoard == true
-            //        select dt);
-
-            //return (from dt in dc.documentTypes
-            //        where dt.onBoard == true
-            //        select dt into docT
-            //        join doc in
-            //            (from d in dc.documents where d.carID == carId && (DateTime.Equals(d.datePo, null) || d.datePo >= DateTime.Now) select d)
-            //        on docT.id equals doc.docTypeID into t
-            //        select docT);
             return (from dt in
                         (
                             (from DocumentTypes in dc.documentTypes
                              where
                                DocumentTypes.onBoard == true &&
-                               DocumentTypes.orgID == orgId
+                               (DocumentTypes.orgID == orgId || DocumentTypes.orgID == null)
                              select new
                              {
                                  DocumentTypes
@@ -97,9 +84,15 @@ namespace Documents.Repository.Implementations
                     from d in d_join.DefaultIfEmpty()
                     where
                       d.Documents1.id == null
-                    select 
+                    select
                         dt.DocumentTypes
                     );
+        }
+
+
+        public IEnumerable<documentTypes> GetDocumentTypesByOrg(int orgId)
+        {
+            return dc.documentTypes.Where(x => x.orgID == orgId || x.orgID == null);
         }
     }
 }

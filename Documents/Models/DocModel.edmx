@@ -95,7 +95,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="onBoard" Type="bit" Nullable="false" />
-          <Property Name="orgID" Type="int" Nullable="false" />
+          <Property Name="orgID" Type="int" />
           <Property Name="vehicleTypeID" Type="int" Nullable="false" />
           <Property Name="alarm1" Type="int" />
           <Property Name="alarm2" Type="int" />
@@ -182,7 +182,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_documentTypes_organizationLists">
-          <End Role="organizationLists" Type="Self.organizationLists" Multiplicity="1" />
+          <End Role="organizationLists" Type="Self.organizationLists" Multiplicity="0..1" />
           <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="organizationLists">
@@ -297,7 +297,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="onBoard" Type="Boolean" Nullable="false" />
-          <Property Name="orgID" Type="Int32" Nullable="false" />
+          <Property Name="orgID" Type="Int32" />
           <Property Name="vehicleTypeID" Type="Int32" Nullable="false" />
           <Property Name="alarm1" Type="Int32" />
           <Property Name="alarm2" Type="Int32" />
@@ -307,8 +307,8 @@
           <Property Name="updateUser" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="updateDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="documents" Relationship="Self.FK_documents_documentTypes" FromRole="documentTypes" ToRole="documents" />
-          <NavigationProperty Name="organizationLists" Relationship="Self.FK_documentTypes_organizationLists" FromRole="documentTypes" ToRole="organizationLists" />
           <NavigationProperty Name="vehicleTypeLists" Relationship="Self.FK_documentTypes_vehicleTypeLists" FromRole="documentTypes" ToRole="vehicleTypeLists" />
+          <NavigationProperty Name="organizationLists" Relationship="DocModel.FK_documentTypes_organizationLists" FromRole="documentTypes" ToRole="organizationLists" />
         </EntityType>
         <EntityType Name="files">
           <Key>
@@ -325,8 +325,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="documentTypes" Relationship="Self.FK_documentTypes_organizationLists" FromRole="organizationLists" ToRole="documentTypes" />
           <NavigationProperty Name="cars" Relationship="DocModel.FK_cars_organizationLists" FromRole="organizationLists" ToRole="cars" />
+          <NavigationProperty Name="documentTypes" Relationship="DocModel.FK_documentTypes_organizationLists" FromRole="organizationLists" ToRole="documentTypes" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -358,18 +358,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_documentTypes_organizationLists">
-          <End Role="organizationLists" Type="Self.organizationLists" Multiplicity="1" />
-          <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="organizationLists">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="documentTypes">
-              <PropertyRef Name="orgID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_documentTypes_vehicleTypeLists">
           <End Role="vehicleTypeLists" Type="Self.vehicleTypeLists" Multiplicity="1" />
           <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="*" />
@@ -397,10 +385,6 @@
             <End Role="documentTypes" EntitySet="documentTypes" />
             <End Role="documents" EntitySet="documents" />
           </AssociationSet>
-          <AssociationSet Name="FK_documentTypes_organizationLists" Association="Self.FK_documentTypes_organizationLists">
-            <End Role="organizationLists" EntitySet="organizationLists" />
-            <End Role="documentTypes" EntitySet="documentTypes" />
-          </AssociationSet>
           <AssociationSet Name="FK_documentTypes_vehicleTypeLists" Association="Self.FK_documentTypes_vehicleTypeLists">
             <End Role="vehicleTypeLists" EntitySet="vehicleTypeLists" />
             <End Role="documentTypes" EntitySet="documentTypes" />
@@ -417,6 +401,10 @@
           <AssociationSet Name="FK_cars_organizationLists" Association="DocModel.FK_cars_organizationLists">
             <End Role="organizationLists" EntitySet="organizationLists" />
             <End Role="cars" EntitySet="cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_documentTypes_organizationLists" Association="DocModel.FK_documentTypes_organizationLists">
+            <End Role="organizationLists" EntitySet="organizationLists" />
+            <End Role="documentTypes" EntitySet="documentTypes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="cars">
@@ -509,6 +497,18 @@
             </Principal>
             <Dependent Role="cars">
               <PropertyRef Name="BranchListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_documentTypes_organizationLists">
+          <End Type="DocModel.organizationLists" Role="organizationLists" Multiplicity="0..1" />
+          <End Type="DocModel.documentTypes" Role="documentTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organizationLists">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="documentTypes">
+              <PropertyRef Name="orgID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

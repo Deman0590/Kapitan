@@ -12,8 +12,7 @@ namespace Documents.Models
         [Required(ErrorMessage = "Введите название")]
         public string Name { get; set; }
         public bool OnBoard { get; set; }
-        [Required(ErrorMessage = "Выбирите организацию")]
-        public int OrgID { get; set; }
+        public int? OrgID { get; set; }
         public string OrgName { get; set; }
         [Required(ErrorMessage = "Выбирите тип ТС")]
         public int VehicleTypeID { get; set; }

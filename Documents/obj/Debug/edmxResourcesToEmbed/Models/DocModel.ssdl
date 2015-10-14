@@ -90,7 +90,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="onBoard" Type="bit" Nullable="false" />
-    <Property Name="orgID" Type="int" Nullable="false" />
+    <Property Name="orgID" Type="int" />
     <Property Name="vehicleTypeID" Type="int" Nullable="false" />
     <Property Name="alarm1" Type="int" />
     <Property Name="alarm2" Type="int" />
@@ -177,7 +177,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_documentTypes_organizationLists">
-    <End Role="organizationLists" Type="Self.organizationLists" Multiplicity="1" />
+    <End Role="organizationLists" Type="Self.organizationLists" Multiplicity="0..1" />
     <End Role="documentTypes" Type="Self.documentTypes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="organizationLists">

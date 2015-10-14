@@ -23,7 +23,7 @@ namespace Documents.Models
         public int id { get; set; }
         public string name { get; set; }
         public bool onBoard { get; set; }
-        public int orgID { get; set; }
+        public Nullable<int> orgID { get; set; }
         public int vehicleTypeID { get; set; }
         public Nullable<int> alarm1 { get; set; }
         public Nullable<int> alarm2 { get; set; }
@@ -35,7 +35,7 @@ namespace Documents.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<documents> documents { get; set; }
-        public virtual organizationLists organizationLists { get; set; }
         public virtual vehicleTypeLists vehicleTypeLists { get; set; }
+        public virtual organizationLists organizationLists { get; set; }
     }
 }
